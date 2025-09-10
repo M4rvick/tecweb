@@ -31,6 +31,36 @@
         echo '</ul>';
         // unset()
         // @$ = $b*10
+
     ?>
+    <h2>Ejercicio 2</h2>
+    <p>Proporcionar los valores de $a, $b, $c como se muestra en el archivo</p>
+    <p>a. Ahora muestra el contenido de cada variable:</p>
+    <?php
+        $a = "ManejadorSQL";
+        $b = "MySQL";
+        $c = &$a;
+        //imprimir variables
+        echo '$a = '.$a. "<br>";    
+        echo '$b = '.$b. "<br>";
+        echo '$c = '.$c . "<br>";
+        
+        echo '<p>b. Agrega al código actual las siguientes asignaciones:</p>';
+        echo "<p>\$a = \"PHP server\"; \$b = &\$a;</p>";
+
+        $a = "PHP server";
+        $b = &$a;       
+        echo '<p>c. Vuelve a mostrar el contenido de cada uno:</p>';
+        echo '$a = '.$a. "<br>";
+        echo '$b = '.$b. "<br>";
+
+        echo '<p>d. Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de
+        asignaciones</p>';
+        echo '<ul>';
+        echo '<li>El valor de $a cambio a "PHP server" (antes era "ManejadorSQL").</li>';
+        echo '<li>$b apunta al valor de $a, por lo que, al cambiar $a tambien cambia el valor de $b</li>';
+        echo '</ul>';
+    ?>
+    
 </body>
 </html>
