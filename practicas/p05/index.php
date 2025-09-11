@@ -60,6 +60,39 @@
         echo '<li>El valor de $a cambio a "PHP server" (antes era "ManejadorSQL").</li>';
         echo '<li>$b apunta al valor de $a, por lo que, al cambiar $a tambien cambia el valor de $b</li>';
         echo '</ul>';
+        unset($a, $b, $c);
+    ?>
+    <h2>Ejercicio 3</h2>
+    <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,
+    verificar la evolución del tipo de estas variables (imprime todos los componentes de los
+    arreglo):
+        <ul>   
+            <li>$a = “PHP5”;</li>
+            <li>$z[] = &$a;</li>
+            <li>$b = “5a version de PHP”;</li>
+            <li>$c = $b*10;</li>
+            <li>$a .= $b;</li>
+            <li>$b *= $c;</li>
+            <li>$z[0] = “MySQL”;</li>
+        </ul>
+    </p>
+    <p>Solucion: </p>
+    <?php
+        $a = "PHP5";
+        echo '$a = '.$a. "<br>";
+        $z[] = &$a;
+        echo '$z[] = ';
+        print_r($z);
+        echo "<br>";
+        $b = "5a version de PHP";
+        echo '$b = '.$b. "<br>";
+        $c = $b*10;
+        echo '$c = '.$c. "<br>";
+        $a .= $b;
+        echo '$a = '.$a. "<br>";
+        $b *= $c;
+        echo '$b = '.$b. "<br>";
+        $z[0] = "MySQL";
     ?>
     
 </body>
