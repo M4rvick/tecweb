@@ -107,6 +107,21 @@
         echo '$GLOBALS["b"] = '.$GLOBALS['b']."<br>";
         echo '$GLOBALS["c"] = '.$GLOBALS['c']."<br>";    
     ?>
-    
+    <h2>Ejercicio 5</h2>
+    <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:
+        <ul>   
+            <li>$a = “7 personas”;</li>
+            <li>$b = (integer) $a;</li>
+            <li>$a = “9E3”;</li>
+            <li>$c = (double) $a;</li>
+            
+        </ul>
+    </p>
+    <?php
+        $a = "7 personas";
+        $b = (integer) $a;
+        $a = "9E3";
+        $c = (double) $a;   
+    ?>
 </body>
 </html>
