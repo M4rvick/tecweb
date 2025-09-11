@@ -114,7 +114,6 @@
             <li>$b = (integer) $a;</li>
             <li>$a = “9E3”;</li>
             <li>$c = (double) $a;</li>
-            
         </ul>
     </p>
     <?php
@@ -122,6 +121,19 @@
         $b = (integer) $a;
         $a = "9E3";
         $c = (double) $a;   
+        $d = true;
+        $e = false;
+        $f = true;  
+        echo '<h2>Ejercicio 6</h2>';
+        echo '<p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
+        usando la función var_dump(<datos>).</p>';
+
+        echo '$a = '; var_dump((bool)$a); echo "<br>";
+        echo '$b = '; var_dump((bool)$b); echo "<br>";
+        echo '$c = '; var_dump((bool)$c); echo "<br>";
+        echo '$d = '; var_dump((bool)$d); echo "<br>";
+        echo '$e = '; var_dump((bool)$e); echo "<br>";
+        echo '$f = '; var_dump((bool)$f); echo "<br>";
     ?>
 </body>
 </html>
