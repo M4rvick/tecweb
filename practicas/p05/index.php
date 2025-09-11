@@ -86,13 +86,26 @@
         echo "<br>";
         $b = "5a version de PHP";
         echo '$b = '.$b. "<br>";
-        $c = $b*10;
+        @$c = $b*10;
         echo '$c = '.$c. "<br>";
         $a .= $b;
         echo '$a = '.$a. "<br>";
-        $b *= $c;
+        @$b *= $c;
         echo '$b = '.$b. "<br>";
         $z[0] = "MySQL";
+        echo '$z[0] = '.$z[0]."<br>";
+        
+    ?>
+    <h2>Ejercicio 4</h2>
+    <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
+    la matriz $GLOBALS o del modificador global de PHP.</p>
+    <?php
+        echo '$GLOBALS["a"] = '.$GLOBALS['a']."<br>";
+        echo '$GLOBALS["z"] = ';
+        print_r($GLOBALS['z']);
+        echo "<br>";
+        echo '$GLOBALS["b"] = '.$GLOBALS['b']."<br>";
+        echo '$GLOBALS["c"] = '.$GLOBALS['c']."<br>";    
     ?>
     
 </body>
