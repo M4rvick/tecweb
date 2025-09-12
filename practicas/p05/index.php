@@ -118,22 +118,54 @@
     </p>
     <?php
         $a = "7 personas";
+        echo '$a = '.$a. "<br>";
         $b = (integer) $a;
+        echo '$b = '.$b. "<br>";
         $a = "9E3";
+        echo '$a = '.$a. "<br>";
         $c = (double) $a;   
-        $d = true;
-        $e = false;
-        $f = true;  
-        echo '<h2>Ejercicio 6</h2>';
-        echo '<p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
-        usando la función var_dump(<datos>).</p>';
+        echo '$c = '.$c. "<br>";
+    ?>
 
+    <h2>Ejercicio 6</h2>
+    <p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
+        usando la función var_dump(<datos>).
+    <?php
+        $a = "0";
+        $b = "TRUE";
+        $c = FALSE;  
+        $d = ($a OR $b);
+        $e = ($a AND $c);
+        $f = ($a XOR $b);
         echo '$a = '; var_dump((bool)$a); echo "<br>";
         echo '$b = '; var_dump((bool)$b); echo "<br>";
         echo '$c = '; var_dump((bool)$c); echo "<br>";
         echo '$d = '; var_dump((bool)$d); echo "<br>";
         echo '$e = '; var_dump((bool)$e); echo "<br>";
         echo '$f = '; var_dump((bool)$f); echo "<br>";
+        echo '<p>Después investiga una función de PHP que permita transformar el valor booleano de $c y $e
+        en uno que se pueda mostrar con un echo:</p>';
+        echo '<h4>Solución:</h4>'; 
+        echo "Usando la funcion var_export() <br>";
+        echo '$c = '. var_export($c, true); echo "<br>"; 
+        echo '$e = '. var_export($e, true); echo "<br>";
     ?>
+
+    <h2>Ejercicio 7</h2>
+    <p>Usando la variable predefinida $_SERVER, determina lo siguiente:
+        <ol type="a">   
+            <li>La versión de Apache y PHP</li>
+            <li>El nombre del sistema operativo (servidor)</li>
+            <li>El idioma del navegador (cliente)</li>
+        </ol>
+    <p>
+    <?php
+        echo '<h4>Solución:</h4>';
+        echo "  Servidor: " . $_SERVER['SERVER_SOFTWARE'] . "<br>"; 
+        echo "  Versión de PHP: " . phpversion() . "<br>";
+        echo "  Sistema operativo del servidor: " . php_uname('s') . "<br>";
+        echo "  Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
+    ?>
+    
 </body>
 </html>
