@@ -52,17 +52,43 @@ function ejercicio3(){
         echo '<li>El número dado se debe obtener vía GET.';
     echo '</ul>';
 
-    if(isset($_GET['numero'])){
-            $num = $_GET['numero'];
-            while (true) {
-                $random = mt_rand(1, 1000);
-                if ($random%$num===0){
-                    echo "$random es el primer entero generado multiplo de " . "$num.";
-                    break; 
-                }
+   if(isset($_GET['numero'])){
+        $num = $_GET['numero'];
+        while (true) {
+            $random = mt_rand(1, 1000);
+            if ($random%$num===0){
+                echo "$random es el primer entero generado multiplo de " . "$num.";
+                break; 
             }
-
         }
-    
+        echo "<br>";
+        do{
+            $random = mt_rand(1, 1000);
+        }while($random % $num !== 0);
+        echo "$random es el primer entero generado múltiplo de $num.";
+
+    }
+}
+
+function ejercicio4(){
+    echo '<h2>Ejercicio 4</h2>';
+    echo '<p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’
+    a la ‘z’. Usa la función chr(n) que devuelve el caracter cuyo código ASCII es n para poner
+    el valor en cada índice.</p>';
+    echo '<ul>';
+        echo '<li>Crea el arreglo con un ciclo for.';
+        echo '<li>Lee el arreglo y crea una tabla en XHTML con echo y un ciclo foreach';
+    echo '</ul>';
+    $letras = [];
+    for ($i = 97; $i <= 122; $i++) {
+        $letras[$i] = chr($i);
+    }
+    echo '<table border="1" cellpadding="5" cellspacing="0">';
+    echo '<tr><th>Índice</th><th>Letra</th></tr>';
+    foreach ($letras as $indice => $valor) {
+        echo "<tr><td>$indice</td><td>$valor</td></tr>";
+    }
+    echo '</table>';
+
 }
 ?>
