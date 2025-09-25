@@ -42,4 +42,27 @@ function ejercicio2(){
     //     echo "Fila $index: " . implode(", ", $fila) . "\n";
     // }
 }
+
+function ejercicio3(){
+    echo '<h2>Ejercicio 3</h2>';
+    echo '<p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.</p>';
+    echo '<ul>';
+        echo '<li>Crear una variante de este script utilizando el ciclo do-while.';
+        echo '<li>El número dado se debe obtener vía GET.';
+    echo '</ul>';
+
+    if(isset($_GET['numero'])){
+            $num = $_GET['numero'];
+            while (true) {
+                $random = mt_rand(1, 1000);
+                if ($random%$num===0){
+                    echo "$random es el primer entero generado multiplo de " . "$num.";
+                    break; 
+                }
+            }
+
+        }
+    
+}
 ?>
