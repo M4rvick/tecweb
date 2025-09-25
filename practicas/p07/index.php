@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-        require_once('src/funciones.php'); ejercicio1();
+        require_once('src/funciones.php'); ejercicio2();
     ?>
 </body>
 </html>
