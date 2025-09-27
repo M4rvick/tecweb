@@ -79,10 +79,12 @@ function ejercicio4(){
         echo '<li>Crea el arreglo con un ciclo for.';
         echo '<li>Lee el arreglo y crea una tabla en XHTML con echo y un ciclo foreach';
     echo '</ul>';
+
     $letras = [];
     for ($i = 97; $i <= 122; $i++) {
         $letras[$i] = chr($i);
     }
+    
     echo '<table border="1" cellpadding="5" cellspacing="0">';
     echo '<tr><th>Índice</th><th>Letra</th></tr>';
     foreach ($letras as $indice => $valor) {
