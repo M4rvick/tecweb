@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Práctica 3</title>
+    <title>Práctica 5</title>
 </head>
 <body>
     <h2>Ejercicio 1</h2>
@@ -66,16 +66,16 @@
     <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,
     verificar la evolución del tipo de estas variables (imprime todos los componentes de los
     arreglo):
-        <ul>   
+    </p>
+    <ul>   
             <li>$a = “PHP5”;</li>
-            <li>$z[] = &$a;</li>
+            <li>$z[] = &amp;$a;</li>
             <li>$b = “5a version de PHP”;</li>
             <li>$c = $b*10;</li>
             <li>$a .= $b;</li>
             <li>$b *= $c;</li>
             <li>$z[0] = “MySQL”;</li>
         </ul>
-    </p>
     <p>Solucion: </p>
     <?php
         $a = "PHP5";
@@ -108,14 +108,13 @@
         echo '$GLOBALS["c"] = '.$GLOBALS['c']."<br>";    
     ?>
     <h2>Ejercicio 5</h2>
-    <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:
-        <ul>   
-            <li>$a = “7 personas”;</li>
-            <li>$b = (integer) $a;</li>
-            <li>$a = “9E3”;</li>
-            <li>$c = (double) $a;</li>
-        </ul>
-    </p>
+    <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>
+    <ul>   
+         <li>$a = “7 personas”;</li>
+         <li>$b = (integer) $a;</li>
+         <li>$a = “9E3”;</li>
+         <li>$c = (double) $a;</li>
+    </ul>
     <?php
         $a = "7 personas";
         echo '$a = '.$a. "<br>";
@@ -129,7 +128,7 @@
 
     <h2>Ejercicio 6</h2>
     <p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
-        usando la función var_dump(<datos>).
+        usando la función var_dump()</p>
     <?php
         $a = "0";
         $b = "TRUE";
@@ -150,15 +149,14 @@
         echo '$c = '. var_export($c, true); echo "<br>"; 
         echo '$e = '. var_export($e, true); echo "<br>";
     ?>
-
+    
     <h2>Ejercicio 7</h2>
-    <p>Usando la variable predefinida $_SERVER, determina lo siguiente:
-        <ol type="a">   
-            <li>La versión de Apache y PHP</li>
-            <li>El nombre del sistema operativo (servidor)</li>
-            <li>El idioma del navegador (cliente)</li>
-        </ol>
-    <p>
+    <p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>
+    <ol style="list-style-type: lower-alpha;">   
+        <li>La versión de Apache y PHP</li>
+        <li>El nombre del sistema operativo (servidor)</li>
+        <li>El idioma del navegador (cliente)</li>
+    </ol>
     <?php
         echo '<h4>Solución:</h4>';
         echo "  Servidor: " . $_SERVER['SERVER_SOFTWARE'] . "<br>"; 
@@ -166,6 +164,10 @@
         echo "  Sistema operativo del servidor: " . php_uname('s') . "<br>";
         echo "  Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
     ?>
-    
+    <p>
+        <a href="https://validator.w3.org/check?uri=referer"><img
+         src="https://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+    </p>
+
 </body>
 </html>
