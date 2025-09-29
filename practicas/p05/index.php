@@ -41,23 +41,23 @@
         $b = "MySQL";
         $c = &$a;
         //imprimir variables
-        echo '$a = '.$a. "<br>";    
-        echo '$b = '.$b. "<br>";
-        echo '$c = '.$c . "<br>";
+        echo '<p>'.'$a = '.$a. "<br/>".'</p>';    
+        echo '<p>'.'$b = '.$b. "<br/>".'</p>';
+        echo '<p>'.'$c = '.$c . "<br/>".'</p>';
         
         echo '<p>b. Agrega al código actual las siguientes asignaciones:</p>';
-        echo "<p>\$a = \"PHP server\"; \$b = &\$a;</p>";
+        echo "<p>\$a = \"PHP server\"; \$b = &amp;\$a;</p>";
 
         $a = "PHP server";
         $b = &$a;       
         echo '<p>c. Vuelve a mostrar el contenido de cada uno:</p>';
-        echo '$a = '.$a. "<br>";
-        echo '$b = '.$b. "<br>";
+        echo '<p>'.'$a = '.$a.'</p>';
+        echo '<p>'.'$b = '.$b.'</p>';
 
         echo '<p>d. Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de
         asignaciones</p>';
         echo '<ul>';
-        echo '<li>El valor de $a cambio a "PHP server" (antes era "ManejadorSQL").</li>';
+        echo '<li>El valor de $a cambio a "PHP server" (antes er    a "ManejadorSQL").</li>';
         echo '<li>$b apunta al valor de $a, por lo que, al cambiar $a tambien cambia el valor de $b</li>';
         echo '</ul>';
         unset($a, $b, $c);
@@ -68,44 +68,44 @@
     arreglo):
     </p>
     <ul>   
-            <li>$a = “PHP5”;</li>
-            <li>$z[] = &amp;$a;</li>
-            <li>$b = “5a version de PHP”;</li>
-            <li>$c = $b*10;</li>
-            <li>$a .= $b;</li>
-            <li>$b *= $c;</li>
-            <li>$z[0] = “MySQL”;</li>
-        </ul>
+        <li>$a = “PHP5”;</li>
+        <li>$z[] = &amp;$a;</li>    
+        <li>$b = “5a version de PHP”;</li>
+        <li>$c = $b*10;</li>
+        <li>$a .= $b;</li>
+        <li>$b *= $c;</li>
+        <li>$z[0] = “MySQL”;</li>
+    </ul>
     <p>Solucion: </p>
     <?php
         $a = "PHP5";
-        echo '$a = '.$a. "<br>";
+        echo '<p>'.'$a = '. $a .'</p>';   
         $z[] = &$a;
-        echo '$z[] = ';
+        echo '<p>$z[] = </p><pre>';
         print_r($z);
-        echo "<br>";
+        echo '</pre>';
         $b = "5a version de PHP";
-        echo '$b = '.$b. "<br>";
+        echo '<p>'.'$b = '.$b. '</p>';
         @$c = $b*10;
-        echo '$c = '.$c. "<br>";
+        echo '<p>'.'$c = '.$c. '</p>';
         $a .= $b;
-        echo '$a = '.$a. "<br>";
+        echo '<p>'.'$a = '.$a. '</p>';;
         @$b *= $c;
-        echo '$b = '.$b. "<br>";
+        echo '<p>'.'$b = '.$b. '</p>';
         $z[0] = "MySQL";
-        echo '$z[0] = '.$z[0]."<br>";
+        echo '<p>'.'$z[0] = '.$z[0].'</p>';
         
     ?>
     <h2>Ejercicio 4</h2>
     <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
     la matriz $GLOBALS o del modificador global de PHP.</p>
     <?php
-        echo '$GLOBALS["a"] = '.$GLOBALS['a']."<br>";
-        echo '$GLOBALS["z"] = ';
+        echo '<p>'.'$GLOBALS["a"] = '.$GLOBALS['a'].'</p>';
+        echo '<p>$GLOBALS["z"] = </p><pre>';
         print_r($GLOBALS['z']);
-        echo "<br>";
-        echo '$GLOBALS["b"] = '.$GLOBALS['b']."<br>";
-        echo '$GLOBALS["c"] = '.$GLOBALS['c']."<br>";    
+        echo '</pre>';
+        echo '<p>'.'$GLOBALS["b"] = '.$GLOBALS['b'].'</p>';
+        echo '<p>'.'$GLOBALS["c"] = '.$GLOBALS['c'].'</p>';    
     ?>
     <h2>Ejercicio 5</h2>
     <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>
@@ -117,13 +117,13 @@
     </ul>
     <?php
         $a = "7 personas";
-        echo '$a = '.$a. "<br>";
+        echo '<p>'.'$a = '.$a.'</p>';
         $b = (integer) $a;
-        echo '$b = '.$b. "<br>";
+        echo '<p>'.'$b = '.$b.'</p>';
         $a = "9E3";
-        echo '$a = '.$a. "<br>";
+        echo '<p>'.'$a = '.$a.'</p>';
         $c = (double) $a;   
-        echo '$c = '.$c. "<br>";
+        echo '<p>'.'$c = '.$c.'</p>';
     ?>
 
     <h2>Ejercicio 6</h2>
@@ -136,20 +136,30 @@
         $d = ($a OR $b);
         $e = ($a AND $c);
         $f = ($a XOR $b);
-        echo '$a = '; var_dump((bool)$a); echo "<br>";
-        echo '$b = '; var_dump((bool)$b); echo "<br>";
-        echo '$c = '; var_dump((bool)$c); echo "<br>";
-        echo '$d = '; var_dump((bool)$d); echo "<br>";
-        echo '$e = '; var_dump((bool)$e); echo "<br>";
-        echo '$f = '; var_dump((bool)$f); echo "<br>";
+        echo '<p>'.'$a = '.'</p>'; 
+        echo '<p>'.'$b = '.'</p>'; 
+        echo '<p>'.'$c = '.'</p>'; 
+        echo '<p>'.'$d = '.'</p>'; 
+        echo '<p>'.'$e = '.'</p>'; 
+        echo '<p>'.'$f = '.'</p>';
+        echo "<pre>";
+        
+        var_dump((bool)$a);
+        var_dump((bool)$b);
+        var_dump((bool)$c);
+        var_dump((bool)$d);
+        var_dump((bool)$e);
+        var_dump((bool)$f);
+        
+        echo "</pre>" ;
         echo '<p>Después investiga una función de PHP que permita transformar el valor booleano de $c y $e
         en uno que se pueda mostrar con un echo:</p>';
         echo '<h4>Solución:</h4>'; 
-        echo "Usando la funcion var_export() <br>";
-        echo '$c = '. var_export($c, true); echo "<br>"; 
-        echo '$e = '. var_export($e, true); echo "<br>";
+        echo '<p>'."Usando la funcion var_export()".'</p>';
+        echo '<p>'.'$c = '. var_export($c, true).'</p>'; 
+        echo '<p>'.'$e = '. var_export($e, true).'</p>';
     ?>
-    
+
     <h2>Ejercicio 7</h2>
     <p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>
     <ol style="list-style-type: lower-alpha;">   
@@ -159,10 +169,10 @@
     </ol>
     <?php
         echo '<h4>Solución:</h4>';
-        echo "  Servidor: " . $_SERVER['SERVER_SOFTWARE'] . "<br>"; 
-        echo "  Versión de PHP: " . phpversion() . "<br>";
-        echo "  Sistema operativo del servidor: " . php_uname('s') . "<br>";
-        echo "  Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
+        echo '<p>'."  Servidor: " . $_SERVER['SERVER_SOFTWARE'] .'</p>';
+        echo '<p>'."  Versión de PHP: " . phpversion() .'</p>';
+        echo '<p>'."  Sistema operativo del servidor: " . php_uname('s') .'</p>';
+        echo '<p>'."  Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] .'</p>';
     ?>
     <p>
         <a href="https://validator.w3.org/check?uri=referer"><img
