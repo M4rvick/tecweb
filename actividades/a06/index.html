@@ -1,16 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
     <script src="./src/main.js"></script>
 </head>
+
 <body>
-    <h1>Hola Mundo de JavaScript</h1>
-    <div id="nombre"></div>
+    <h1>Actividad 6</h1>
+    <!-- <div id="nombre"></div>
     <div id="edad"></div>
-    
-    <input id="clickMe" type="button" value="clickme" onclick="getDatos();" />
+
+    <input id="clickMe" type="button" value="clickme" onclick="getDatos();" /> -->
+
+    <h2>1. Hola Mundo de JavaScript</h2>
+    <div id="mensaje"></div>
+    <input id="buttonMensaje" type="button" value="Mostrar mensaje" onclick="holaMundo();" />
+
+    <h2>2. Ver datos de Juan </h2>
+    <div id="juan"></div>
+    <input id="buttonJuan" type="button" value="Ver datos" onclick="datosPersona();" />
+
+    <h2>3. Entrada de datos</h2>
+    <p>Insertar nombre y edad</p>
+    <div id="datos"></div>
+    <input id="buttonDatos" type="button" value="Ingresar datos" onclick="mensajePersona();" />
+
+    <h2>4. Suma y Producto</h2>
+    <p>Insertar dos numeros y ver su suma y su producto</p>
+    <div id="resultados"></div>
+    <input id="buttonRes" type="button" value="Ingresar datos" onclick="sumayProducto();" />
+
+    <h2>5. Ver nota</h2>
+    <p>Insertar promedio y ver la nota</p>
+    <div id="nota"></div>
+    <input id="buttonNote" type="button" value="Ingresar datos" onclick="nota();" />
+
+    <h2>6. Numero mayor</h2>
+    <p>Insertar dos numeros y ver cual es el mayor</p>
+    <div id="mayor"></div>
+    <input id="buttonMayor" type="button" value="Ingresar numeros" onclick="numeroMayor();" />
+
+    <h2>7. Escala de calificacion</h2>
+    <p>Insertar tres promedios y ver la nota</p>
+    <div id="promedio"></div>
+    <input id="buttonProm" type="button" value="Ingresar calificaciones" onclick="calificacion();" />
+
+    <h2>8. Leer valor</h2>
+    <p>Ingresar un valor y obtener el texto</p>
+    <div id="valor"></div>
+    <input id="buttonValor" type="button" value="Ingresar valor" onclick="leerValor();" />
+
+    <h2>9. Cambiar background</h2>
+    <p>Cambiar el color de fondo con hasta 3 colores</p>
+    <div id="color"></div>
+    <input id="buttonColor" type="button" value="Escribir color" onclick="color();" />
+
+    <h2>10. Imprimir numeros del 1 al 100</h2>
+    <div id="lista"></div>
+    <input id="buttonWhile" type="button" value="Generar numeros" onclick="generarNumeros();" />
+
+    <h2>11. Hacer sumatoria</h2>
+    <p>Insertar 5 numeros y ver su sumatoria</p>
+    <div id="suma"></div>
+    <input id="buttonSumatoria" type="button" value="Generar sumatoria" onclick="sumatoria();" />
+
+    <h2>12. Obtener numero de digitos</h2>
+    <p>Ingresa un numero en 0 y 999 para saber cuantos digitos tiene.</p>
+    <div id="digitos"></div>
+    <input id="buttonDigitos" type="button" value="Obtener digitos" onclick="digitos();" />
+
+    <h2>13. Obtener numeros del 1 al 10 usando for</h2>
+    <div id="nums"></div>
+    <input id="buttonNums" type="button" value="Obtener numeros" onclick="onetoTen();" />
+
+    <h2>14. Mostrar mensaje 3 veces en pantalla sin usar funcion</h2>
+    <div id="mensajes"></div>
+    <input id="buttonMessages" type="button" value="Ver mensajes" onclick="mensajes();" />
+    <script type=“text/javascript”></script>
+
+
+    <h2>15. Mostrar mensaje 3 veces en pantalla usando funcion</h2>
+    <div id="mensajesf"></div>
+    <input id="buttonMessagesf" type="button" value="Ver mensajes" onclick="mensajesf();" />
+
+    <h2>16. Funcion que muestra numeros entre dos valores</h2>
+    <div id="medios"></div>
+    <input type="button" value="Generar" onclick="
+      let valor1 = parseInt(prompt('Ingresa el valor inferior:'));
+      let valor2 = parseInt(prompt('Ingresa el valor superior:'));
+      medios(valor1, valor2);
+    " />
+
+    <h2>17. Función que retorna un número en texto</h2>
+    <div id="numero"></div>
+
+    <input type="button" value="Generar" onclick="
+      let x = parseInt(prompt('Escribe un valor entre 1 y 5:'));
+      let resultado = retornoValor(x);
+      document.getElementById('numero').innerHTML = resultado;
+    " />
+
+    <h2>18. Función que retorna un número en texto (usando switch)</h2>
+    <div id="palabra"></div>
+    <input type="button" value="Generar" onclick="
+      let a = parseInt(prompt('Escribe un valor entre 1 y 5:'));
+      let result = retornoValorB(a);
+      document.getElementById('palabra').innerHTML = result;
+    " />
 </body>
+
 </html>
