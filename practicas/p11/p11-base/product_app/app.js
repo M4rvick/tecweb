@@ -125,7 +125,30 @@ function buscarProducto(e) {
     client.send("query=" + encodeURIComponent(busqueda));
 }
 
+// function agregarProducto(e) {
+//     e.preventDefault();
 
+//     // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
+//     var productoJsonString = document.getElementById('description').value;
+//     // SE CONVIERTE EL JSON DE STRING A OBJETO
+//     var finalJSON = JSON.parse(productoJsonString);
+//     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
+//     finalJSON['nombre'] = document.getElementById('name').value;
+//     // SE OBTIENE EL STRING DEL JSON FINAL
+//     productoJsonString = JSON.stringify(finalJSON, null, 2);
+
+//     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+//     var client = getXMLHttpRequest();
+//     client.open('POST', './backend/create.php', true);
+//     client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
+//     client.onreadystatechange = function () {
+//         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+//         if (client.readyState == 4 && client.status == 200) {
+//             console.log(client.responseText);
+//         }
+//     };
+//     client.send(productoJsonString);
+// }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
 function agregarProducto(e) {
@@ -150,8 +173,18 @@ function agregarProducto(e) {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
             console.log(client.responseText);
-            window.alert("¡Producto agregado exitosamente!");
-            document.getElementById('ID_DEL_FORMULARIO').reset();
+            const serverResponse = JSON.parse(client.responseText);
+
+            // Muestra el mensaje de éxito o error devuelto por create.php
+            window.alert(serverResponse.message);
+
+            // Si la inserción fue exitosa, limpia el formulario
+            if (serverResponse.status === 'success') {
+                document.getElementById('task-form').reset();
+                init(); // Vuelve a inicializar el textarea de JSON con el baseJSON
+            }
+            //window.alert("¡Producto agregado exitosamente!");
+            document.getElementById('task-form').reset();
         }
     };
     client.send(productoJsonString);
