@@ -131,26 +131,126 @@ function buscarProducto(e) {
 function agregarProducto(e) {
     e.preventDefault();
 
-    // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-    var productoJsonString = document.getElementById('description').value;
-    // SE CONVIERTE EL JSON DE STRING A OBJETO
-    var finalJSON = JSON.parse(productoJsonString);
-    // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-    finalJSON['nombre'] = document.getElementById('name').value;
-    // SE OBTIENE EL STRING DEL JSON FINAL
-    productoJsonString = JSON.stringify(finalJSON, null, 2);
+    const validacion = validarDatos();
+    if (!validacion.valid) {
+        // Muestra los errores en un solo pop-up y detiene el proceso
+        window.alert("Por favor, corrija los siguientes errores:\n\n" + validacion.errores.join("\n"));
+        return; // Detiene el envío AJAX
+    }
+
+    const finalJSON = validacion.data;
+    const productoJsonString = JSON.stringify(finalJSON, null, 2);
 
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
     var client = getXMLHttpRequest();
     client.open('POST', './backend/create.php', true);
     client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
+
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
             console.log(client.responseText);
+            window.alert("¡Producto agregado exitosamente!");
+            document.getElementById('ID_DEL_FORMULARIO').reset();
         }
     };
     client.send(productoJsonString);
+}
+
+function validarDatos() {
+    // Array para almacenar los errores
+    let errores = [];
+    let finalData = {}; // Objeto para datos validados
+
+    // validacion para nombre
+    const nombre = document.getElementById('name').value.trim();
+    if (nombre === "") {
+        errores.push("El nombre del producto es requerido.");
+    } else if (nombre.length > 100) {
+        errores.push("El nombre no puede tener más de 100 caracteres.");
+    }
+    finalData.nombre = nombre;
+
+    // -validacion y parseo del textfield
+    const productoJsonString = document.getElementById('description').value.trim();
+    let productoData = null;
+
+    if (productoJsonString === "") {
+        errores.push("El JSON de la descripción es requerido.");
+    } else {
+        try {
+            // Intenta convertir la cadena de texto a un objeto JSON
+            productoData = JSON.parse(productoJsonString);
+        } catch (e) {
+            errores.push("El formato del JSON es inválido. Asegúrese de usar comillas dobles en las claves.");
+            // Si el JSON es inválido, retornamos inmediatamente con los errores
+            return { valid: false, errores: errores };
+        }
+    }
+
+    //validacion del json
+    if (productoData) {
+
+        // marca
+        const marca = (productoData.marca || "").trim();
+        if (marca === "") {
+            errores.push("La marca dentro del JSON es requerida.");
+        }
+        finalData.marca = marca;
+
+        // modelo
+        const modelo = (productoData.modelo || "").trim();
+        const modeloRegex = /^[a-zA-Z0-9\s\-]+$/;
+        if (modelo === "") {
+            errores.push("El modelo dentro del JSON es requerido.");
+        } else if (modelo.length > 25) {
+            errores.push("El modelo no puede tener más de 25 caracteres.");
+        } else if (!modeloRegex.test(modelo)) {
+            errores.push("El modelo solo puede contener caracteres alfanuméricos, espacios y guiones.");
+        }
+        finalData.modelo = modelo;
+
+        // precio
+        const precio = productoData.precio;
+        const precioNumerico = parseFloat(precio);
+        if (precio === undefined || precio === null || isNaN(precioNumerico)) {
+            errores.push("El precio dentro del JSON es requerido y debe ser un número.");
+        } else if (precioNumerico <= 99.99) {
+            errores.push("El precio debe ser mayor a $99.99.");
+        }
+        finalData.precio = precioNumerico.toFixed(2);
+
+        // units
+        const unidades = productoData.unidades;
+        const unidadesNumericas = parseInt(unidades, 10);
+        if (unidades === undefined || unidades === null || isNaN(unidadesNumericas)) {
+            errores.push("El número de unidades dentro del JSON es requerido y debe ser un número entero.");
+        } else if (unidadesNumericas < 0) {
+            errores.push("Las unidades no pueden ser un número negativo.");
+        }
+        finalData.unidades = unidadesNumericas;
+
+        // datils
+        const detalles = (productoData.detalles || "").trim();
+        if (detalles.length > 250) {
+            errores.push("Los detalles no pueden exceder los 250 caracteres.");
+        }
+        finalData.detalles = detalles;
+
+        // imagen
+        let imagen = (productoData.imagen || "").trim();
+        if (imagen === '') {
+            imagen = baseJSON.imagen; // Usa el valor por defecto
+        }
+        finalData.imagen = imagen;
+    }
+
+    //retornar objeto 
+    if (errores.length > 0) {
+        return { valid: false, errores: errores };
+    } else {
+        return { valid: true, data: finalData, errores: [] };
+    }
 }
 
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
