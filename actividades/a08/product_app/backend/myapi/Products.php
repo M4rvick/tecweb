@@ -104,24 +104,93 @@
             $stmt_insert->close();
         }
 
-        public function delete(string $id): void
-        {
+        public function delete(array $data): void
+            {
 
-        }
+                $this->response = [
+                    'status'  => 'error',
+                    'message' => 'La consulta falló'
+                ];
+
+                if ( isset($data['id']) ) {
+
+                    $id = $data['id'];
+                    $sql = "UPDATE productos SET eliminado=1 WHERE id = {$id}";
+
+                    if ( $this->conexion->query($sql) ) {
+                        $this->response['status'] = "success";
+                        $this->response['message'] = "Producto eliminado";
+                    }
+                }
+            }
 
         public function edit(array $data): void
         {
+           
+            $this->response = [
+                'status'  => 'error',
+                'message' => 'La consulta falló'
+            ];
+
+            if( isset($data['id']) ) {
+                
+                $jsonOBJ = json_decode( json_encode($data) );
+
+                $sql =  "UPDATE productos SET nombre='{$jsonOBJ->nombre}', marca='{$jsonOBJ->marca}',";
+                $sql .= "modelo='{$jsonOBJ->modelo}', precio={$jsonOBJ->precio}, detalles='{$jsonOBJ->detalles}',"; 
+                $sql .= "unidades={$jsonOBJ->unidades}, imagen='{$jsonOBJ->imagen}' WHERE id={$jsonOBJ->id}";
+
+                $this->conexion->set_charset("utf8");
+ 
+                if ( $this->conexion->query($sql) ) {
+                    $this->response['status'] =  "success";
+                    $this->response['message'] =  "Producto actualizado";
+                } else {
+                    $this->response['message'] = "ERROR: No se ejecuto $sql. " . $this->conexion->error;
+                }
+
+            }
+        }
+
+        public function search(array $getData): void
+        {
+            $this->response = [];
             
+            if ( isset($getData['search']) ) {
+
+                $search = $getData['search'];
+
+                $sql = "SELECT * FROM productos WHERE (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0";
+
+                if ( $result = $this->conexion->query($sql) ) {
+
+                    $this->response = $result->fetch_all(MYSQLI_ASSOC);
+  
+                    $result->free();
+                }
+
+            }
         }
 
-        public function search(string $searchTerm): void
+        public function single(array $data): void
         {
+            
+            if ( isset($data['id']) ) {
+              
+                $id = $data['id'];
+                $sql = "SELECT * FROM productos WHERE id = {$id}";
+ 
+                if ( $result = $this->conexion->query($sql) ) {
+    
+                    $row = $result->fetch_assoc();
 
-        }
+                    if(!is_null($row)) {
+                        $this->response = $row;
+                    }
 
-        public function single(string $id): void
-        {
-
+                    $result->free();
+                }
+            }
         }
 
         public function singleByName(string $name): void
