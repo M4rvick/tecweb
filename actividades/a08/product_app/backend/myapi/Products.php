@@ -193,9 +193,23 @@
             }
         }
 
-        public function singleByName(string $name): void
+        public function singleByName(array $data): void
         {
+            $this->response = [];
+            if ( isset($data['name']) ) {
+                
+                $name = $data['name'];
+                $sql = "SELECT * FROM productos WHERE nombre = '{$name}' AND eliminado = 0 LIMIT 1";
 
+                if ( $result = $this->conexion->query($sql) ) {
+                    $row = $result->fetch_assoc();
+
+                    if(!is_null($row)) {
+                        $this->response = $row;
+                    }
+                    $result->free();
+                }
+            }
         }
 
     }

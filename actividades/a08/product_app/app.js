@@ -309,4 +309,26 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
+
+    // $(document).on('click', '.product-item', (e) => {
+    //     const element = $(this)[0].activeElement.parentElement.parentElement;
+    //     const id = $(element).attr('productName');
+    //     $.post('./backend/product-singlebyname.php', { name }, (response) => {
+    //         // SE CONVIERTE A OBJETO EL JSON OBTENIDO
+    //         let product = JSON.parse(response);
+    //         // SE INSERTAN LOS DATOS ESPECIALES EN LOS CAMPOS CORRESPONDIENTES
+    //         $('#name').val(product.nombre);
+    //         $('#price').val(product.precio);
+    //         $('#units').val(product.unidades);
+    //         $('#model').val(product.modelo);
+    //         $('#brand').val(product.marca);
+    //         $('#details').val(product.detalles);
+    //         $('#image').val(product.imagen);
+    //         $('#productId').val(product.id);
+
+    //         // SE PONE LA BANDERA DE EDICIÓN EN true
+    //         edit = true;
+    //     });
+    //     e.preventDefault();
+    // });
 });
