@@ -1,8 +1,7 @@
 <?php
-    use Backend\Myapi\Products;
-    require_once __DIR__ . '/myapi/Products.php';
-
-    $productManager = new Products();
-    $productManager->singleByName($_POST); 
-    echo $productManager->getData();
+    require_once __DIR__ . '/../vendor/autoload.php';
+    use myapi\Read\Read;
+    $product = new Read();
+    $product->singleByName($_POST); 
+    echo $product->getData();
 ?>

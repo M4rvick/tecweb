@@ -1,8 +1,7 @@
 <?php
-    use Backend\myapi\Products;
-    require_once __DIR__ . '/myapi/Products.php';
-
-    $productManager = new Products();
+    require_once __DIR__ . '/../vendor/autoload.php';
+    use myapi\Delete\Delete;
+    $productManager = new Delete();
     $productManager->delete($_POST); 
     echo $productManager->getData();
 ?>
