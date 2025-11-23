@@ -1,8 +1,8 @@
 <?php
-    use TECWEB\MYAPI\Products;
-    require_once __DIR__.'/myapi/Products.php';
+    use Backend\Myapi\Products;
+    require_once __DIR__ . '/myapi/Products.php';
 
-    $productos = new Products('marketzone');
-    $productos->search( $_GET['search'] );
-    echo $productos->getData();
+    $productManager = new Products();
+    $productManager->search($_GET);
+    echo $productManager->getData();
 ?>

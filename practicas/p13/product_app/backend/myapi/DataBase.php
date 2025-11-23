@@ -1,26 +1,27 @@
 <?php
-namespace TECWEB\MYAPI;
+//dump-autoload -o 
 
-abstract class DataBase {
-    protected $conexion;
-
-    public function __construct($db, $user, $pass) {
-        $this->conexion = @mysqli_connect(
-            'localhost',
-            $user,
-            $pass,
-            $db
-        );
+    namespace myapi;
+    use mysqli;
     
-        /**
-         * NOTA: si la conexión falló $conexion contendrá false
-         **/
-        if(!$this->conexion) {
-            die('¡Base de datos NO conextada!');
+    abstract class Database
+    {
+        protected $conexion;
+        protected $response = [];
+
+        public function __construct(string $host, string $user, string $pass, string $db)
+        {
+            
+            $this->conexion = new mysqli($host, $user, $pass, $db);
+            if ($this->conexion->connect_error) {
+                die('¡Base de datos NO conectada!');
+            }
+            $this->conexion->set_charset("utf8");
         }
-        /*else {
-            echo 'Base de datos encontrada';
-        }*/
+
+        public function getData(): string
+        {
+            return json_encode($this->response, JSON_PRETTY_PRINT);
+        }
     }
-}
 ?>
