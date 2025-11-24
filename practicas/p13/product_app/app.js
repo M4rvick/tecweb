@@ -44,7 +44,7 @@ $(document).ready(function () {
                                 <td><a href="#" class="product-item">${producto.nombre}</a></td>
                                 <td><ul>${descripcion}</ul></td>
                                 <td>
-                                    <button class="product-delete btn btn-danger" onclick="eliminarProducto()">
+                                    <button class="product-delete btn btn-danger">
                                         Eliminar
                                     </button>
                                 </td>
@@ -277,12 +277,21 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click', '.product-delete', (e) => {
+    $(document).on('click', '.product-delete', function (e) {
         if (confirm('¿Realmente deseas eliminar el producto?')) {
-            const element = $(this)[0].activeElement.parentElement.parentElement;
+
+            const element = $(this).closest('tr');
             const id = $(element).attr('productId');
+
             $.post('./backend/product-delete.php', { id }, (response) => {
-                $('#product-result').hide();
+
+                let respuesta = JSON.parse(response);
+                let template_bar = `
+                        <li style="list-style: none;">status: ${respuesta.status}</li>
+                        <li style="list-style: none;">message: ${respuesta.message}</li>
+                    `;
+                $('#product-result').show();
+                $('#container').html(template_bar);
                 listarProductos();
             });
         }

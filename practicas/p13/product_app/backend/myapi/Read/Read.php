@@ -7,8 +7,6 @@
 
     class Read extends Database
     {
-
-      
         public function __construct(
             string $db = 'marketzone',
             string $host = 'localhost',

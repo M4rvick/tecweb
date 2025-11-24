@@ -28,10 +28,13 @@
 
                     $id = $data['id'];
                     $sql = "UPDATE productos SET eliminado=1 WHERE id = {$id}";
-
-                    if ( $this->conexion->query($sql) ) {
-                        $this->response['status'] = "success";
-                        $this->response['message'] = "Producto eliminado";
+      
+                    $this->conexion->set_charset("utf8");
+                                            if ( $this->conexion->query($sql) ) {
+                        $this->response['status'] =  "success";
+                        $this->response['message'] =  "Producto eliminado";
+                    } else {
+                        $this->response['message'] = "ERROR: No se ejecuto $sql. " . $this->conexion->error;
                     }
                 }
             }
